@@ -15,3 +15,5 @@ Ele dinamicamente adiciona nos filhos as classes:
 dados-fade-enter // antes do elemento ser incluído ou removido, o estado atual
 dados-fade-enter-active // quando o elemento esta sendo incluído
 dados-fade-leave-active // quando o elemento esta sendo removido
+
+router-view: Serve para indicar para o template da página principal da aplicação o local no qual os demais componentes carregados através de rotas devem ser renderizados.
