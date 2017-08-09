@@ -1,0 +1,17 @@
+A diretiva v-bind realiza uma associação que flui da fonte de dados para a view. Qualquer mudança na fonte de dados fará com que a view seja atualizada para representar o novo valor.
+
+Já a diretiva v-on realiza uma associação de evento que flui da view para a fonte de dados. Para que as mudanças realizadas por v-on sejam atualizadas na view, é necessário combinar v-on com v-bind.
+Parabéns, você acertou!
+Atalho pro V-ON é o @
+
+<style scope>
+Scope - Adicionar nas tags style para focar apenas na configuração do scopo que esta trabalhando e não vazar estilos para o scopo de estilos global.
+
+<transition name="dados-fade"></transition>
+Transition - Serve como marcação para adicionar um estilo como uma animação, só pode ser usado com um elemento, se tentarmos colocar mais um elemento como filho do nosso wrapper receberemos um erro.
+
+Ele dinamicamente adiciona nos filhos as classes: 
+
+dados-fade-enter // antes do elemento ser incluído ou removido, o estado atual
+dados-fade-enter-active // quando o elemento esta sendo incluído
+dados-fade-leave-active // quando o elemento esta sendo removido

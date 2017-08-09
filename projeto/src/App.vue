@@ -2,11 +2,13 @@
   <div class="corpo">
     <h1 class="centralizado">{{ titulo }}</h1>
 
+    <input type="search" class="filtro" @input="filtro = $event.target.value"  placeholder="Informe sua busca...">
+
     <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-for="foto of fotos">
+      <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
 
         <meu-painel :titulo="foto.titulo">
-          <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
+          <imagem-responsiva :url="foto.url" :titulo="foto.titulo"></imagem-responsiva>
         </meu-painel>
 
       </li>
@@ -17,19 +19,34 @@
 
 <script>
 import Painel from './components/shared/painel/Painel.vue';
+import ImagemResponsiva from './components/shared/imagem-responsiva/ImagemResponsiva.vue';
 
 export default {
 
   components: {
-    'meu-painel': Painel
+    'meu-painel': Painel,
+    'imagem-responsiva': ImagemResponsiva
   },
 
   data(){
     return{
       titulo: 'Searchall',
-      fotos: []
+      fotos: [],
+      filtro: ''
     }
-  }, created(){
+  }, 
+    computed: {
+      fotosComFiltro(){
+        if(this.filtro){
+          let exp = new RegExp(this.filtro.trim(), 'i');
+          return this.fotos.filter(foto => exp.test(foto.titulo));
+        } else {
+          return this.fotos;
+        }
+      }
+    },
+
+    created(){
     this.$http.get('http://localhost:3000/v1/fotos')
       .then(res => res.json())
       .then(fotos => this.fotos = fotos, err => console.log(err));
@@ -55,7 +72,11 @@ export default {
 .lista-fotos .lista-fotos-item {
   display: inline-block;
 }
-.imagem-responsiva {
-  width: 100%;
+.filtro {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  padding: 0.5em;
+  box-shadow: 5px 5px 5px #888888;
 }
 </style>
