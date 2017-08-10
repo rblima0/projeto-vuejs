@@ -36,11 +36,11 @@ nav.menu > ul > li {
     text-transform: uppercase;
 }
 nav.menu > ul > li > a {
-  color: #c0392b;
+  color: #d35400;
   font-weight: bold;
   text-decoration: none;
 }
 nav.menu > ul > li > a:hover{
-    color: #e74c3c;
+    color: #e67e22;
 }
 </style>

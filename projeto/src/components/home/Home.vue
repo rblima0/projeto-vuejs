@@ -8,7 +8,9 @@
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
 
         <meu-painel :titulo="foto.titulo">
-          <imagem-responsiva :url="foto.url" :titulo="foto.titulo"></imagem-responsiva>
+          <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
+          <meu-botao tipo="button" rotulo="REMOVER" @botaoAtivado="remove(foto)" :confirmacao="true" 
+          estilo="perigo" />
         </meu-painel>
 
       </li>
@@ -20,12 +22,14 @@
 <script>
 import Painel from '../shared/painel/Painel.vue';
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue';
+import Botao from '../shared/botao/Botao.vue';
 
 export default {
 
   components: {
     'meu-painel': Painel,
-    'imagem-responsiva': ImagemResponsiva
+    'imagem-responsiva': ImagemResponsiva,
+    'meu-botao': Botao
   },
 
   data(){
@@ -34,7 +38,8 @@ export default {
       fotos: [],
       filtro: ''
     }
-  }, 
+  },
+
     computed: {
       fotosComFiltro(){
         if(this.filtro){
@@ -43,6 +48,12 @@ export default {
         } else {
           return this.fotos;
         }
+      }
+    },
+
+    methods: {
+      remove(foto){
+          alert('Removendo a foto: ' + foto.titulo);
       }
     },
 
@@ -58,8 +69,8 @@ export default {
 .centralizado {
   text-align: center;
   text-transform: uppercase;
-  color: #c0392b;
-  border-bottom: 1px solid #e74c3c;
+  color: #d35400;
+  border-bottom: 1px solid #e67e22;
 }
 .lista-fotos {
   list-style: none;

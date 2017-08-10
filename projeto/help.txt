@@ -1,4 +1,5 @@
 A diretiva v-bind realiza uma associação que flui da fonte de dados para a view. Qualquer mudança na fonte de dados fará com que a view seja atualizada para representar o novo valor.
+V-bind tambem confirma expressão Bolleano
 
 Já a diretiva v-on realiza uma associação de evento que flui da view para a fonte de dados. Para que as mudanças realizadas por v-on sejam atualizadas na view, é necessário combinar v-on com v-bind.
 Parabéns, você acertou!
