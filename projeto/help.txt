@@ -1,3 +1,9 @@
+Subir o projeto
+entra na pasta api > npm start
+entra na pasta projeto > npm run dev
+
+Diretiva v-for e v-show
+
 A diretiva v-bind realiza uma associação que flui da fonte de dados para a view. Qualquer mudança na fonte de dados fará com que a view seja atualizada para representar o novo valor.
 V-bind tambem confirma expressão Bolleano
 
@@ -17,4 +23,22 @@ dados-fade-enter // antes do elemento ser incluído ou removido, o estado atual
 dados-fade-enter-active // quando o elemento esta sendo incluído
 dados-fade-leave-active // quando o elemento esta sendo removido
 
-router-view: Serve para indicar para o template da página principal da aplicação o local no qual os demais componentes carregados através de rotas devem ser renderizados.
+router-view: Serve para indicar para o template da página principal da aplicação o local no qual os demais componentes carregados através de ro2tas devem ser renderizados.
+
+
+Diretivas - Diretivas permitem isolar um código que pode ser aplicado em mais de um componente.
+
+bind(el, binding, vnode)
+função bind de uma diretiva recebe três parâmetros.
+
+bind - um hook chamado toda vez que a diretiva é associada ao elemento do DOM.
+
+el - é um elemento do DOM no qual a diretiva esta associada e, sendo um elemento do DOM, podemos adicionar evento da maneira tradicional no mundo JS através de addEventListener.
+
+binding - Acessa o valor com binding.value, binding.modifiers
+
+vnode - parâmetro é uma referência para o Virtual DOM utilizado pelo Vue. Ele permite acessar propriedades do Componente no qual ela foi associada, no entanto, essa dependência pode acabar com o reuso da diretiva, por isso deve ser usado com parcimônia.
+
+
+ $event.target.value" - Uniderecional da View para a fonte de dados
+ Quando o evento input for disparado, teremos acesso ao seu valor através de $event.target.value. Este valor pode ser usado para alterar propriedades do componente.
