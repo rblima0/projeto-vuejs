@@ -42,3 +42,5 @@ vnode - parâmetro é uma referência para o Virtual DOM utilizado pelo Vue. Ele
 
  $event.target.value" - Uniderecional da View para a fonte de dados
  Quando o evento input for disparado, teremos acesso ao seu valor através de $event.target.value. Este valor pode ser usado para alterar propriedades do componente.
+
+ Diretiva v-model - Bidirecional 

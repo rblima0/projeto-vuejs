@@ -8,20 +8,20 @@
       <div class="controle">
         <label for="titulo">TÍTULO</label>
         <input id="titulo" autocomplete="off" 
-            @input="foto.titulo = $event.target.value" :value="foto.titulo">
+           v-model.lazy="foto.titulo">
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
         <input id="url" autocomplete="off" 
-            @input="foto.url = $event.target.value" :value="foto.url">
-        <imagem-responsiva/>
+            v-model.lazy="foto.url">
+        <imagem-responsiva v-show="foto.url" :url="foto.url" :titulo="foto.titulo" />
       </div>
 
       <div class="controle">
         <label for="descricao">DESCRIÇÃO</label>
         <textarea id="descricao" autocomplete="off" 
-            @input="foto.descricao = $event.target.value" :value="foto.descricao">
+            v-model="foto.descricao">
         </textarea>
       </div>
 
@@ -38,6 +38,7 @@
 
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue'
 import Botao from '../shared/botao/Botao.vue';
+import Foto from '../../domain/foto/Foto';
 
 export default {
 
@@ -49,22 +50,14 @@ export default {
 
   data(){
       return {
-          foto: {
-              titulo: '',
-              url: '',
-              descricao: ''
-          }
+          foto: new Foto()
       }
   },
 
   methods: {
       grava(){
-          console.log(this.foto);
-          this.foto = {
-              titulo: '',
-              url: '',
-              descricao: ''
-          };
+          this.$http.post('http://localhost:3000/v1/fotos', this.foto)
+          .then(() => this.foto = new Foto(), err => console.log(err));
       }
   }
 }
