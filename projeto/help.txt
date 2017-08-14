@@ -69,3 +69,11 @@ Usando SASS
 Se usar direto na pagina do VUE usar a tag <style scoped lang="scss">
 Se criar um arquivo com extensao .scss usar o codigo <style lang="sass">
 e usar o import @import './arquivo.scss';
+
+
+Para usar imagens inserir dentro da pasta static e importar essa pasta quando der o build
+Todas as imagens devem ser inseridas dentro dessa pasta 
+Para usar <img src="/static/nome-da-imagem.png">
+
+//Descomente o codigo no webpack.config para fazer build com a URL de sua API
+API_URL: '"http://enderecodasuaapi.com"'

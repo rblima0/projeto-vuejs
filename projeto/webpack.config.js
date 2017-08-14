@@ -50,7 +50,15 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  //Codigo de importação do Jquery
+  //Descomente esse codigo do plugins para usar o JQUERY
+  /* plugins: [
+        new webpack.ProvidePlugin({
+           $: 'jquery/dist/jquery.js',
+           jQuery: 'jquery/dist/jquery.js'
+       })
+    ] */
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -59,7 +67,9 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        //Descomente o codigo abaixo para fazer build com a URL de sua API
+        //API_URL: '"http://enderecodasuaapi.com"'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
