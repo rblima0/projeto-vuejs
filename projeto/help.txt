@@ -58,3 +58,8 @@ export const routes = [
 let codigo = this.$route.params.codigo
 $route.params.NomeDoParametro que temos acesso ao valor do parâmetro passado. É importante destacar que o nome do parâmetro é o mesmo nome utilizado para parametrizar a rota.
 
+
+
+Fazendo Build 
+
+npm run build
