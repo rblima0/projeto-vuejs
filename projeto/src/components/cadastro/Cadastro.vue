@@ -9,14 +9,18 @@
     <form @submit.prevent="grava()">
       <div class="controle">
         <label for="titulo">TÍTULO</label>
-        <input id="titulo" autocomplete="off" 
-           v-model.lazy="foto.titulo">
+        <input name="titulo" id="titulo" placeholder="Informe o titulo..." autocomplete="off"
+         v-validate="'required'" v-model.lazy="foto.titulo" 
+          :class="{'input': true, 'is-danger': errors.has('titulo') }">
+            <span v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
-        <input id="url" autocomplete="off" 
-            v-model.lazy="foto.url">
+          <input name="url" id="url" placeholder="Informe a URL..." autocomplete="off"
+            v-validate="'required'" v-model.lazy="foto.url"
+            :class="{'input': true, 'is-danger': errors.has('url') }">
+            <span v-show="errors.has('url')">{{ errors.first('url') }}</span>
         <imagem-responsiva v-show="foto.url" :url="foto.url" :titulo="foto.titulo" />
       </div>
 
@@ -62,12 +66,19 @@ export default {
 
       grava(){
 
-          this.service
+        this.$validator
+        .validateAll()
+        .then(success => {
+          if(success){
+
+            this.service
             .cadastra(this.foto)
             .then(() => {
               if(this.id) this.$router.push({ name: 'home' });
               this.foto = new Foto();
             }, err => console.log(err));
+          }
+        });
       }
   },
   
