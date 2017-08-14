@@ -60,6 +60,12 @@ $route.params.NomeDoParametro que temos acesso ao valor do par√¢metro passado. √
 
 
 
-Fazendo Build 
-
+Fazendo Build
 npm run build
+
+
+Usando SASS
+
+Se usar direto na pagina do VUE usar a tag <style scoped lang="scss">
+Se criar um arquivo com extensao .scss usar o codigo <style lang="sass">
+e usar o import @import './arquivo.scss';
